@@ -9,6 +9,7 @@ class SnakeGame {
         this.score = 0;
         this.gameOver = false;
         this.paused = false;
+        this.lastSnakeLength = 1;
 
         document.addEventListener('keydown', this.handleKeyPress.bind(this));
         this.gameLoop = this.gameLoop.bind(this);
@@ -84,6 +85,7 @@ class SnakeGame {
     handleGameOver() {
         this.gameOver = true;
         this.paused = true;
+        this.lastSnakeLength = this.snake.length;
         
         triviaManager.showTriviaModal(
             // Correct answer callback
@@ -102,7 +104,15 @@ class SnakeGame {
         const centerX = Math.floor((this.canvas.width / this.gridSize) / 2);
         const centerY = Math.floor((this.canvas.height / this.gridSize) / 2);
         
-        this.snake = [{x: centerX, y: centerY}];
+        // יצירת נחש חדש באורך המקורי
+        this.snake = [];
+        for (let i = 0; i < this.lastSnakeLength; i++) {
+            this.snake.push({
+                x: centerX - i,  // הנחש מתפרש שמאלה מהמרכז
+                y: centerY
+            });
+        }
+        
         this.direction = 'right';
         this.gameOver = false;
         this.paused = false;
@@ -130,6 +140,7 @@ class SnakeGame {
         this.score = 0;
         this.gameOver = false;
         this.paused = false;
+        this.lastSnakeLength = 1;
         document.getElementById('score').textContent = this.score;
     }
 
