@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחק נחש עם טריוויה</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>משחק נחש עם טריוויה</h1>
+        <div class="game-stats">
+            <span>ניקוד: <span id="score">0</span></span>
+        </div>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        
+        <!-- מודל טריוויה -->
+        <div id="triviaModal" class="modal">
+            <div class="modal-content">
+                <h2>שאלת טריוויה!</h2>
+                <p>ענה נכון כדי להמשיך לשחק!</p>
+                <p id="questionText"></p>
+                <div id="answers"></div>
+                <div id="feedback" class="feedback"></div>
+            </div>
+        </div>
+    </div>
+    <script src="trivia.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 
